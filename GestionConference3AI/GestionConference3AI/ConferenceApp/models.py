@@ -6,6 +6,7 @@ from django.utils import timezone
 
 import uuid
 
+# Create your models here.
 class Conference(models.Model) :
     conference_id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=255)

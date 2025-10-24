@@ -5,14 +5,24 @@ from .views import (
     ConferenceCreate,
     ConferenceUpdate,
     ConferenceDelete,
-    ConferenceList
 )
 
 urlpatterns = [
-    path("liste/", ConferenceList.as_view(), name="liste_conferences"),
+    # Liste
+    path("liste/", views.liste_conferences, name="liste_conferences"),
+
+    # Détails
     path("<int:pk>/", ConferenceDetails.as_view(), name="conference_details"),
+
+    # Ajouter
     path("ajouter/", ConferenceCreate.as_view(), name="conference_create"),
+
+    # Modifier
     path("<int:pk>/modifier/", ConferenceUpdate.as_view(), name="conference_update"),
+
+    # Supprimer
     path("<int:pk>/supprimer/", ConferenceDelete.as_view(), name="conference_delete"),
+
+    # Si l’utilisateur tape “details/” sans pk → rediriger vers la liste
     path("details/", views.details_index, name="details_index"),
 ]

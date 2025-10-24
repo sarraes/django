@@ -1,0 +1,56 @@
+# --- Dossiers et fichiers spécifiques à ton projet ---
+venv/
+GestionConference3AI/db.sqlite3
+GestionConference3AI/papers/
+
+# --- Fichiers Python compilés ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Extensions C compilées ---
+*.so
+
+# --- Fichiers Django ---
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+db.sqlite3
+
+# --- Dossiers statiques et médias ---
+media/
+staticfiles/
+
+# --- Environnements virtuels ---
+venv/
+ENV/
+env/
+.venv/
+
+# --- Fichiers de configuration IDE / éditeur ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Fichiers système ---
+.DS_Store
+Thumbs.db
+
+# --- Rapports de couverture ---
+htmlcov/
+.coverage
+
+# --- Cache Pytest ---
+.pytest_cache/
+
+# --- Migrations (optionnel, à ignorer si tu veux pas les versionner) ---
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# --- Fichiers d'environnement / secrets ---
+.env
+.env.*.local
