@@ -4,10 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     class Meta:
-        modem=User
-        fields=['username','first_name','last_name','email','affiliation','nationality','password1','password2']
-        widgets={
-            'email':forms.EmailInput(attrs={'placeholder':"entrer votre email Universitaire",}),
-            'password1':forms.PasswordInput(),
-            'password2':forms.PasswordInput(),
+        model = User  # ✅ Correction ici !
+        fields = [
+            'username', 'first_name', 'last_name', 'email',
+            'affiliation', 'nationality', 'password1', 'password2'
+        ]
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder': "Entrez votre email universitaire"}),
+            'password1': forms.PasswordInput(),
+            'password2': forms.PasswordInput(),
         }
+""""
+    def save(self,commit= True):
+        return super().save(commit)
+        user.role="participant"
+        if commit:
+            user.save() 
+        return user
+"""

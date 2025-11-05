@@ -5,14 +5,27 @@ from .views import (
     ConferenceCreate,
     ConferenceUpdate,
     ConferenceDelete,
-    ConferenceList
+    ConferenceList,
+    SubmissionList,
+    SubmissionDetailView,
+    SubmissionCreate,
+    SubmissionUpdate
 )
 
 urlpatterns = [
-    path("liste/", ConferenceList.as_view(), name="liste_conferences"),
-    path("<int:pk>/", ConferenceDetails.as_view(), name="conference_details"),
-    path("ajouter/", ConferenceCreate.as_view(), name="conference_create"),
-    path("<int:pk>/modifier/", ConferenceUpdate.as_view(), name="conference_update"),
-    path("<int:pk>/supprimer/", ConferenceDelete.as_view(), name="conference_delete"),
-    path("details/", views.details_index, name="details_index"),
+    #Conférences
+    path("conferences/liste/", ConferenceList.as_view(), name="liste_conferences"),
+    path("conferences/ajouter/", ConferenceCreate.as_view(), name="conference_create"),
+    path("conferences/<int:pk>/", ConferenceDetails.as_view(), name="conference_details"),
+    path("conferences/<int:pk>/modifier/", ConferenceUpdate.as_view(), name="conference_update"),
+    path("conferences/<int:pk>/supprimer/", ConferenceDelete.as_view(), name="conference_delete"),
+
+    #Soumissions
+    path("submissions/liste/", SubmissionList.as_view(), name="submission_list"),
+    path("submissions/ajouter/", SubmissionCreate.as_view(), name="submission_create"),
+    path("submissions/<str:pk>/details/", SubmissionDetailView.as_view(), name="submission_details"),
+    path("submissions/<str:pk>/modifier/", SubmissionUpdate.as_view(), name="submission_update"),
+
+    
 ]
+

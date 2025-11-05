@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>La liste des soumissions</h1>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Auteur</th>
+            <th>Conférence</th>
+            <th>Date de soumission</th>
+            <th>Paiement</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in liste %}
+        <tr>
+            <td>{{ s.title }}</td>
+            <td>{{ s.get_status_display }}</td>
+            <td>{{ s.user.username }}</td>
+            <td>{{ s.conference.name }}</td>
+            <td>{{ s.submission_date|date:"d/m/Y H:i" }}</td>
+            <td>
+                {% if s.payed %}
+                    Payé
+                {% else %}
+                    Non payé
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'submission_details' s.pk %}">Détails</a> |
+                <a href="{% url 'submission_update' s.pk %}">Modifier</a>
+                {% if user.is_authenticated and user.role == "commitee" %}
+                    | <a href="#">Supprimer</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">Aucune soumission disponible.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>
+    <a href="{% url 'submission_create' %}">➕ Ajouter une soumission</a>
+</p>
+{% endblock %}

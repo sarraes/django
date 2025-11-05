@@ -1,6 +1,10 @@
+{% if view.object.pk %}
+<h1>Formulaire de modification de la soumission {{ object.title }}</h1>
+{% else %}
 <h1>Formulaire d'ajout</h1>
+{% endif %}
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.non_field_errors %}
@@ -21,5 +25,5 @@
 </form>
 
 <p>
-    <a href="{% url 'liste_conferences' %}">← Retour à la liste</a>
+    <a href="{% url 'submission_list' %}">← Retour à la liste</a>
 </p>

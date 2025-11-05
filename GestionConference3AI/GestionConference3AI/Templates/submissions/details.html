@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Détails de la soumission : {{ submission.title }}</h1>
+
+<ul>
+    <li><strong>Titre :</strong> {{ submission.title }}</li>
+    <li><strong>Résumé :</strong> {{ submission.abstract }}</li>
+    <li><strong>Mots-clés :</strong> {{ submission.keywords }}</li>
+    
+    <li><strong>Fichier :</strong>
+    {% if submission.paper %}
+        <a href="{{ submission.paper.url }}" download>Télécharger le fichier</a>
+    {% else %}
+        Aucun fichier disponible
+    {% endif %}
+</li>
+    <li><strong>Statut :</strong> {{ submission.get_status_display }}</li>
+    <li><strong>Conférence :</strong> {{ submission.conference.name }}</li>
+    <li><strong>Auteur :</strong> {{ submission.user.username }}</li>
+</ul>
+
+<p>
+    <a href="{% url 'submission_list' %}">← Retour à la liste des soumissions</a>
+</p>
+{% endblock %}

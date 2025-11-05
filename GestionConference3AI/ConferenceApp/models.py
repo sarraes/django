@@ -99,4 +99,4 @@ class Submission(models.Model) :
         if submissions_today.count() >= 3:
             raise ValidationError("Vous ne pouvez pas soumettre plus de 3 conférences par jour.")
 
-         
+        
