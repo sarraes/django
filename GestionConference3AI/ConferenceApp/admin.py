@@ -16,7 +16,7 @@ class SubmissionInline(admin.StackedInline):
 @admin.register(Conference)
 class AdminConferenceModel(admin.ModelAdmin):
     list_display=("name","theme","start_date","end_date","a")
-    ordering=("start_date",)
+    ordering=("start_date",) #asc desc
     list_filter=("theme",)
     search_fields=("description","name") #barre de recherche
     date_hierarchy="start_date"

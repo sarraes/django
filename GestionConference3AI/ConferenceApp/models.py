@@ -86,7 +86,7 @@ class Submission(models.Model) :
 
 
 
-        if self.user_id:  
+        if self.user.user_id:  
             today = timezone.now().date()
             submissions_today = Submission.objects.filter(
                 user=self.user,

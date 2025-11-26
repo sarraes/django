@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     class Meta:
-        model = User  # ✅ Correction ici !
+        model = User  
         fields = [
             'username', 'first_name', 'last_name', 'email',
             'affiliation', 'nationality', 'password1', 'password2'

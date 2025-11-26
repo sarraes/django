@@ -1,14 +1,30 @@
-<h1>Détails conférence : {{ conference.name }}</h1>
+<h1>Détails rental : {{ conference.name }}</h1>
 
 <ul>
-    <li><strong>Thème :</strong> {{ conference.get_theme_display }}</li>
+    <li><strong>Brand :</strong> {{ conference.get_theme_display }}</li>
     <li><strong>Lieu :</strong> {{ conference.location }}</li>
     <li><strong>Description :</strong> {{ conference.description }}</li>
     <li><strong>Dates :</strong> {{ conference.start_date }} - {{ conference.end_date }}</li>
     <li><strong>Créée le :</strong> {{ conference.created_at }}</li>
     <li><strong>Mis à jour le :</strong> {{ conference.updated_at }}</li>
 </ul>
+<h2>Liste des emprunts</h2>
 
-<p>
-    <a href="{% url 'liste_conferences' %}">← Retour à la liste</a> |
-</p>
+<ul>
+    {% for b in borrowings %}
+        <li>
+            Client : {{ b.client.name }} <br>
+            Date d’emprunt : {{ b.borrow_date }} <br>
+            Retour : 
+            {% if b.return_date %}
+                {{ b.return_date }}
+            {% else %}
+                <strong>Non retourné</strong>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Aucun emprunt pour ce livre.</li>
+    {% endfor %}
+</ul>
+
+

@@ -25,8 +25,10 @@ urlpatterns = [
     path("",RedirectView.as_view(url="conferences/liste/")),
     path('conferences/',include("ConferenceApp.urls")),
     path('submissions/',include("ConferenceApp.urls")),
-    path('user/',include('UserApp.urls')),    
+    path('user/',include('UserApp.urls')),  
+    path('api/',include('SessionAppApi.urls')),  
+    path('Security/',include('SecurityConfigApp.urls')), 
 ]
 
-if settings.DEBUG:
+if settings.DEBUG:  
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
